@@ -1,0 +1,331 @@
+
+
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: #262626;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #f0f0f0;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Usa vh para asegurar el 100% de la ventana */
+    margin: 0;
+}
+
+/* ============================================
+   HEADER Y NAVEGACIÓN
+   ============================================ */
+
+.headbar {
+    padding: 20px 30px;
+    background-color: rgb(24, 29, 169);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+header {
+    display: grid;
+    grid-template-columns: 150px 1fr 250px; /* Logo - Título - Links */
+    align-items: center;
+    gap: 20px;
+}
+
+/* Logo */
+.logo {
+    height: 100px;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+}
+
+.logo img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.logo:hover {
+    transform: scale(1.1);
+}
+
+/* Navegación */
+.menu-enlaces {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    flex: 1;
+    justify-content: center;
+}
+
+.menu-enlaces a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 18px;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+    position: relative;
+}
+
+.menu-enlaces a:hover {
+    color: #ffeb3b;
+    text-shadow: 0 0 10px rgba(255, 235, 59, 0.5);
+}
+
+/* Título del header */
+.title {
+    text-align: right;
+    flex: 1;
+}
+
+.title h3 {
+    color: white;
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0;
+}
+
+/* ============================================
+   CONTENIDO PRINCIPAL (STICKY FOOTER)
+   ============================================ */
+
+.contenido-principal {
+    flex: 1;
+    padding: 60px 20px;
+}
+
+.contenido-principal .container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Secciones */
+.seccion {
+    margin-bottom: 50px;
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-left: 4px solid rgb(24, 29, 169);
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.seccion:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.seccion h2 {
+    color: #ffeb3b;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-transform: capitalize;
+}
+
+.seccion p {
+    color: #e0e0e0;
+    font-size: 16px;
+    line-height: 1.8;
+    text-align: justify;
+}
+
+/* Botón CTA */
+.cta-button {
+    margin-top: 25px;
+    text-align: center;
+}
+
+.btn-link {
+    display: inline-block;
+    padding: 15px 30px;
+    background: linear-gradient(135deg, rgb(24, 29, 169), #1a1f9f);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(24, 29, 169, 0.3);
+}
+
+.btn-link:hover {
+    background: linear-gradient(135deg, #1a1f9f, rgb(24, 29, 169));
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(24, 29, 169, 0.5);
+    color: #ffeb3b;
+}
+
+/* Sección QR */
+.qr-section {
+    text-align: center;
+    background: linear-gradient(135deg, rgba(24, 29, 169, 0.1), rgba(255, 235, 59, 0.05));
+    border: 2px dashed rgb(24, 29, 169);
+}
+
+.qr-placeholder {
+    padding: 40px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    margin-top: 20px;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.qr-placeholder p {
+    color: #999;
+    font-size: 18px;
+}
+
+/* ============================================
+   ENLACES GENERALES
+   ============================================ */
+
+a {
+    color: #ffeb3b;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #fff59d;
+    text-decoration: underline;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+
+.pie {
+    background-color: #1a1a1a;
+    color: #b0b0b0;
+    padding: 30px 20px;
+    text-align: center;
+    border-top: 3px solid rgb(24, 29, 169);
+    font-size: 14px;
+    line-height: 1.8;
+    width: 100%;
+    margin-top: auto; /* Esta es la clave para empujarlo al fondo */
+    flex-shrink: 0; /* Evita que el footer se aplaste */
+}
+
+.pie p {
+    margin: 8px 0;
+}
+
+.pie p:last-child {
+    margin-bottom: 0;
+}
+
+/* ============================================
+   RESPONSIVIDAD (MOBILE FIRST)
+   ============================================ */
+
+/* Tablets */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+
+    .menu-enlaces {
+        flex-direction: column;
+        gap: 15px;
+        justify-content: center;
+    }
+
+    .menu-enlaces a {
+        font-size: 16px;
+    }
+
+    .title h3 {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .seccion {
+        padding: 20px;
+        margin-bottom: 30px;
+    }
+
+    .seccion h2 {
+        font-size: 24px;
+    }
+
+    .seccion p {
+        font-size: 15px;
+        text-align: left;
+    }
+
+    .contenido-principal {
+        padding: 40px 15px;
+        flex: 1 0 auto;
+    }
+}
+
+
+@media (max-width: 480px) {
+    .headbar {
+        padding: 15px 10px;
+    }
+
+    .logo {
+        height: 80px;
+        width: 80px;
+    }
+
+    header {
+        gap: 15px;
+    }
+
+    .menu-enlaces {
+        gap: 10px;
+    }
+
+    .menu-enlaces a {
+        font-size: 14px;
+    }
+
+    .title h3 {
+        font-size: 18px;
+    }
+
+    .seccion {
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+
+    .seccion h2 {
+        font-size: 20px;
+    }
+
+    .seccion p {
+        font-size: 14px;
+    }
+
+    .btn-link {
+        padding: 12px 20px;
+        font-size: 14px;
+    }
+
+    .contenido-principal {
+        padding: 30px 10px;
+    }
+
+    .pie {
+        margin-top: auto; 
+    flex-shrink: 0;   
+    background-color: #1a1a1a;
+    width: 100%;
+    }
+}
