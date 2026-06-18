@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+<link rel="stylesheet" href="estilos2.css">
+    <title>PaginaQR</title>
+</head>
+<body>
+    /* ============================================
+   VARIABLES CSS PARA MEJOR MANTENIBILIDAD
+   ============================================ */
+
+:root {
+    --primary-color: rgb(24, 29, 169);
+    --secondary-color: #ffeb3b;
+    --dark-bg: #262626;
+    --darker-bg: #1a1a1a;
+    --text-light: #f0f0f0;
+    --text-muted: #e0e0e0;
+    --text-dim: #999;
+    --border-radius: 8px;
+    --transition-speed: 0.3s;
+    --base-font-size: 16px;
+}
+
+/* ============================================
+   TIPOGRAFÍA FLUIDA
+   ============================================ */
+
+html {
+    font-size: clamp(14px, 2vw, 18px); /* Escala automática entre 14px y 18px */
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--dark-bg);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-light);
+    line-height: 1.6;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* ============================================
+   HEADER Y NAVEGACIÓN
+   ============================================ */
+
+.headbar {
+    padding: clamp(15px, 4vw, 30px);
+    background-color: var(--primary-color);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+header {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: clamp(15px, 3vw, 30px);
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Logo */
+.logo {
+    height: clamp(70px, 12vw, 120px);
+    width: clamp(70px, 12vw, 120px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform var(--transition-speed) ease;
+    flex-shrink: 0;
+}
+
+.logo img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.logo:hover {
+    transform: scale(1.1);
+}
+
+/* Navegación */
+.menu-enlaces {
+    display: flex;
+    gap: clamp(20px, 4vw, 50px);
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.menu-enlaces a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: clamp(14px, 2.5vw, 20px);
+    transition: color var(--transition-speed) ease, text-shadow var(--transition-speed) ease;
+    position: relative;
+    white-space: nowrap;
+}
+
+.menu-enlaces a:hover {
+    color: var(--secondary-color);
+    text-shadow: 0 0 10px rgba(255, 235, 59, 0.5);
+}
+
+/* Título del header */
+.title {
+    text-align: right;
+}
+
+.title h3 {
+    color: white;
+    font-size: clamp(18px, 3vw, 28px);
+    font-weight: 600;
+    margin: 0;
+    word-wrap: break-word;
+}
+
+/* ============================================
+   CONTENIDO PRINCIPAL (STICKY FOOTER)
+   ============================================ */
+
+.contenido-principal {
+    flex: 1;
+    padding: clamp(30px, 6vw, 80px) clamp(15px, 4vw, 40px);
+}
+
+.contenido-principal .container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Secciones */
+.seccion {
+    margin-bottom: clamp(30px, 5vw, 60px);
+    padding: clamp(20px, 4vw, 40px);
+    background-color: rgba(255, 255, 255, 0.05);
+    border-left: 4px solid var(--primary-color);
+    border-radius: var(--border-radius);
+    transition: background-color var(--transition-speed) ease;
+}
+
+.seccion:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.seccion h2 {
+    color: var(--secondary-color);
+    font-size: clamp(24px, 4vw, 32px);
+    font-weight: 700;
+    margin-bottom: clamp(15px, 3vw, 25px);
+    text-transform: capitalize;
+}
+
+.seccion p {
+    color: var(--text-muted);
+    font-size: clamp(14px, 2vw, 18px);
+    line-height: 1.8;
+    text-align: justify;
+}
+
+/* Botón CTA */
+.cta-button {
+    margin-top: clamp(20px, 3vw, 30px);
+    text-align: center;
+}
+
+.btn-link {
+    display: inline-block;
+    padding: clamp(12px, 2vw, 18px) clamp(20px, 4vw, 40px);
+    background: linear-gradient(135deg, var(--primary-color), #1a1f9f);
+    color: white;
+    text-decoration: none;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    font-size: clamp(14px, 2vw, 18px);
+    transition: all var(--transition-speed) ease;
+    box-shadow: 0 4px 15px rgba(24, 29, 169, 0.3);
+}
+
+.btn-link:hover {
+    background: linear-gradient(135deg, #1a1f9f, var(--primary-color));
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(24, 29, 169, 0.5);
+    color: var(--secondary-color);
+}
+
+/* Sección QR */
+.qr-section {
+    text-align: center;
+    background: linear-gradient(135deg, rgba(24, 29, 169, 0.1), rgba(255, 235, 59, 0.05));
+    border: 2px dashed var(--primary-color);
+}
+
+.qr-placeholder {
+    padding: clamp(30px, 5vw, 50px);
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: var(--border-radius);
+    margin-top: clamp(15px, 3vw, 25px);
+    min-height: clamp(250px, 40vw, 400px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.qr-placeholder p {
+    color: var(--text-dim);
+    font-size: clamp(16px, 2.5vw, 22px);
+}
+
+/* ============================================
+   GALERÍA DE PROGRESO
+   ============================================ */
+
+.galeria-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(clamp(180px, 40vw, 280px), 1fr));
+    gap: clamp(15px, 3vw, 25px);
+    margin-top: clamp(15px, 3vw, 25px);
+}
+
+.imagen-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    border: 2px solid var(--primary-color);
+    aspect-ratio: 4 / 3;
+    background-color: var(--darker-bg);
+}
+
+.imagen-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.descripcion-overlay {
+    position: absolute;
+    bottom: -100%;
+    left: 0;
+    width: 100%;
+    background: rgba(24, 29, 169, 0.9);
+    color: #fff;
+    padding: clamp(10px, 2vw, 20px);
+    box-sizing: border-box;
+    transition: bottom 0.4s ease;
+    text-align: center;
+    border-top: 2px solid var(--secondary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
+}
+
+.descripcion-overlay p {
+    margin: 0;
+    font-size: clamp(12px, 1.8vw, 16px);
+    color: #fff;
+    text-align: center;
+    line-height: 1.4;
+}
+
+/* Efecto Hover */
+.imagen-item:hover img {
+    transform: scale(1.05);
+}
+
+.imagen-item:hover .descripcion-overlay {
+    bottom: 0;
+}
+
+/* ============================================
+   ENLACES GENERALES
+   ============================================ */
+
+a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    transition: color var(--transition-speed) ease;
+}
+
+a:hover {
+    color: #fff59d;
+    text-decoration: underline;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+
+.pie {
+    background-color: var(--darker-bg);
+    color: #b0b0b0;
+    padding: clamp(20px, 4vw, 40px);
+    text-align: center;
+    border-top: 3px solid var(--primary-color);
+    font-size: clamp(12px, 1.8vw, 16px);
+    line-height: 1.8;
+    width: 100%;
+    margin-top: auto;
+    flex-shrink: 0;
+}
+
+.pie p {
+    margin: clamp(5px, 1vw, 10px) 0;
+}
+
+.pie p:last-child {
+    margin-bottom: 0;
+}
+
+/* ============================================
+   RESPONSIVIDAD MEJORADA
+   ============================================ */
+
+/* Tablets (768px y menores) */
+@media (max-width: 768px) {
+    header {
+        grid-template-columns: 1fr;
+        gap: clamp(10px, 3vw, 20px);
+        text-align: center;
+    }
+
+    .logo {
+        justify-self: center;
+    }
+
+    .menu-enlaces {
+        flex-direction: column;
+        gap: clamp(10px, 2vw, 15px);
+        justify-content: center;
+        order: 3;
+        width: 100%;
+    }
+
+    .menu-enlaces a {
+        display: block;
+        width: 100%;
+    }
+
+    .title {
+        text-align: center;
+        order: 2;
+    }
+
+    .seccion {
+        padding: clamp(15px, 3vw, 25px);
+        margin-bottom: clamp(20px, 4vw, 40px);
+    }
+
+    .seccion p {
+        text-align: left;
+    }
+
+    .contenido-principal {
+        padding: clamp(20px, 4vw, 40px) clamp(10px, 3vw, 20px);
+        flex: 1 0 auto;
+    }
+
+    .galeria-container {
+        grid-template-columns: repeat(auto-fit, minmax(clamp(150px, 45vw, 250px), 1fr));
+    }
+}
+
+/* Móviles pequeños (480px y menores) */
+@media (max-width: 480px) {
+    .headbar {
+        padding: clamp(10px, 3vw, 15px);
+    }
+
+    header {
+        gap: clamp(8px, 2vw, 12px);
+    }
+
+    .logo {
+        height: clamp(60px, 15vw, 90px);
+        width: clamp(60px, 15vw, 90px);
+    }
+
+    .menu-enlaces {
+        gap: clamp(8px, 1.5vw, 12px);
+    }
+
+    .menu-enlaces a {
+        font-size: clamp(13px, 2vw, 16px);
+    }
+
+    .title h3 {
+        font-size: clamp(16px, 2.5vw, 22px);
+    }
+
+    .seccion {
+        padding: clamp(12px, 2.5vw, 18px);
+        margin-bottom: clamp(15px, 3vw, 25px);
+    }
+
+    .seccion h2 {
+        font-size: clamp(20px, 3.5vw, 26px);
+        margin-bottom: clamp(10px, 2vw, 15px);
+    }
+
+    .seccion p {
+        font-size: clamp(13px, 1.8vw, 16px);
+    }
+
+    .btn-link {
+        padding: clamp(10px, 2vw, 14px) clamp(15px, 3vw, 25px);
+        font-size: clamp(12px, 1.8vw, 15px);
+    }
+
+    .contenido-principal {
+        padding: clamp(15px, 3vw, 25px) clamp(8px, 2vw, 12px);
+    }
+
+    .galeria-container {
+        grid-template-columns: 1fr;
+        gap: clamp(12px, 2vw, 18px);
+    }
+
+    .imagen-item {
+        aspect-ratio: 16 / 9;
+    }
+
+    .descripcion-overlay p {
+        font-size: clamp(11px, 1.6vw, 14px);
+    }
+
+    .pie {
+        padding: clamp(15px, 3vw, 25px);
+        font-size: clamp(11px, 1.6vw, 14px);
+    }
+}
+
+/* Ultra-pequeños (menos de 320px - para dispositivos muy antiguos) */
+@media (max-width: 320px) {
+    .menu-enlaces {
+        gap: clamp(5px, 1vw, 8px);
+    }
+
+    .menu-enlaces a {
+        font-size: clamp(12px, 1.5vw, 14px);
+    }
+
+    .galeria-container {
+        gap: clamp(8px, 1.5vw, 12px);
+    }
+}
+</body>
+</html>
