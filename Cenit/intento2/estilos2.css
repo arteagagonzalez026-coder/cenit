@@ -1,4 +1,27 @@
+/* ============================================
+   VARIABLES CSS PARA MEJOR MANTENIBILIDAD
+   ============================================ */
 
+:root {
+    --primary-color: rgb(24, 29, 169);
+    --secondary-color: #ffeb3b;
+    --dark-bg: #262626;
+    --darker-bg: #1a1a1a;
+    --text-light: #f0f0f0;
+    --text-muted: #e0e0e0;
+    --text-dim: #999;
+    --border-radius: 8px;
+    --transition-speed: 0.3s;
+    --base-font-size: 16px;
+}
+
+/* ============================================
+   TIPOGRAFÍA FLUIDA
+   ============================================ */
+
+html {
+    font-size: clamp(14px, 2vw, 18px); /* Escala automática entre 14px y 18px */
+}
 
 html, body {
     height: 100%;
@@ -7,13 +30,11 @@ html, body {
 body {
     display: flex;
     flex-direction: column;
-    background-color: #262626;
+    background-color: var(--dark-bg);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #f0f0f0;
+    color: var(--text-light);
     line-height: 1.6;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh; /* Usa vh para asegurar el 100% de la ventana */
+    min-height: 100vh;
     margin: 0;
 }
 
@@ -22,8 +43,8 @@ body {
    ============================================ */
 
 .headbar {
-    padding: 20px 30px;
-    background-color: rgb(24, 29, 169);
+    padding: clamp(15px, 4vw, 30px);
+    background-color: var(--primary-color);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     position: sticky;
     top: 0;
@@ -32,19 +53,21 @@ body {
 
 header {
     display: grid;
-    grid-template-columns: 150px 1fr 250px; /* Logo - Título - Links */
+    grid-template-columns: auto 1fr auto;
     align-items: center;
-    gap: 20px;
+    gap: clamp(15px, 3vw, 30px);
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
 /* Logo */
 .logo {
-    height: 100px;
-    width: 100px;
+    height: clamp(70px, 12vw, 120px);
+    width: clamp(70px, 12vw, 120px);
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: transform 0.3s ease;
+    transition: transform var(--transition-speed) ease;
     flex-shrink: 0;
 }
 
@@ -61,37 +84,38 @@ header {
 /* Navegación */
 .menu-enlaces {
     display: flex;
-    gap: 40px;
+    gap: clamp(20px, 4vw, 50px);
     align-items: center;
-    flex: 1;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .menu-enlaces a {
     color: white;
     text-decoration: none;
     font-weight: 600;
-    font-size: 18px;
-    transition: color 0.3s ease, text-shadow 0.3s ease;
+    font-size: clamp(14px, 2.5vw, 20px);
+    transition: color var(--transition-speed) ease, text-shadow var(--transition-speed) ease;
     position: relative;
+    white-space: nowrap;
 }
 
 .menu-enlaces a:hover {
-    color: #ffeb3b;
+    color: var(--secondary-color);
     text-shadow: 0 0 10px rgba(255, 235, 59, 0.5);
 }
 
 /* Título del header */
 .title {
     text-align: right;
-    flex: 1;
 }
 
 .title h3 {
     color: white;
-    font-size: 24px;
+    font-size: clamp(18px, 3vw, 28px);
     font-weight: 600;
     margin: 0;
+    word-wrap: break-word;
 }
 
 /* ============================================
@@ -100,22 +124,22 @@ header {
 
 .contenido-principal {
     flex: 1;
-    padding: 60px 20px;
+    padding: clamp(30px, 6vw, 80px) clamp(15px, 4vw, 40px);
 }
 
 .contenido-principal .container {
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
 }
 
 /* Secciones */
 .seccion {
-    margin-bottom: 50px;
-    padding: 30px;
+    margin-bottom: clamp(30px, 5vw, 60px);
+    padding: clamp(20px, 4vw, 40px);
     background-color: rgba(255, 255, 255, 0.05);
-    border-left: 4px solid rgb(24, 29, 169);
-    border-radius: 8px;
-    transition: background-color 0.3s ease;
+    border-left: 4px solid var(--primary-color);
+    border-radius: var(--border-radius);
+    transition: background-color var(--transition-speed) ease;
 }
 
 .seccion:hover {
@@ -123,67 +147,131 @@ header {
 }
 
 .seccion h2 {
-    color: #ffeb3b;
-    font-size: 28px;
+    color: var(--secondary-color);
+    font-size: clamp(24px, 4vw, 32px);
     font-weight: 700;
-    margin-bottom: 20px;
+    margin-bottom: clamp(15px, 3vw, 25px);
     text-transform: capitalize;
 }
 
 .seccion p {
-    color: #e0e0e0;
-    font-size: 16px;
+    color: var(--text-muted);
+    font-size: clamp(14px, 2vw, 18px);
     line-height: 1.8;
     text-align: justify;
 }
 
 /* Botón CTA */
 .cta-button {
-    margin-top: 25px;
+    margin-top: clamp(20px, 3vw, 30px);
     text-align: center;
 }
 
 .btn-link {
     display: inline-block;
-    padding: 15px 30px;
-    background: linear-gradient(135deg, rgb(24, 29, 169), #1a1f9f);
+    padding: clamp(12px, 2vw, 18px) clamp(20px, 4vw, 40px);
+    background: linear-gradient(135deg, var(--primary-color), #1a1f9f);
     color: white;
     text-decoration: none;
-    border-radius: 8px;
+    border-radius: var(--border-radius);
     font-weight: 600;
-    font-size: 16px;
-    transition: all 0.3s ease;
+    font-size: clamp(14px, 2vw, 18px);
+    transition: all var(--transition-speed) ease;
     box-shadow: 0 4px 15px rgba(24, 29, 169, 0.3);
 }
 
 .btn-link:hover {
-    background: linear-gradient(135deg, #1a1f9f, rgb(24, 29, 169));
+    background: linear-gradient(135deg, #1a1f9f, var(--primary-color));
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(24, 29, 169, 0.5);
-    color: #ffeb3b;
+    color: var(--secondary-color);
 }
 
 /* Sección QR */
 .qr-section {
     text-align: center;
     background: linear-gradient(135deg, rgba(24, 29, 169, 0.1), rgba(255, 235, 59, 0.05));
-    border: 2px dashed rgb(24, 29, 169);
+    border: 2px dashed var(--primary-color);
 }
 
 .qr-placeholder {
-    padding: 40px;
+    padding: clamp(30px, 5vw, 50px);
     background-color: rgba(255, 255, 255, 0.05);
-    border-radius: 8px;
-    margin-top: 20px;
-    min-height: 300px;
+    border-radius: var(--border-radius);
+    margin-top: clamp(15px, 3vw, 25px);
+    min-height: clamp(250px, 40vw, 400px);
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .qr-placeholder p {
-    color: #999;
-    font-size: 18px;
+    color: var(--text-dim);
+    font-size: clamp(16px, 2.5vw, 22px);
+}
+
+/* ============================================
+   GALERÍA DE PROGRESO
+   ============================================ */
+
+.galeria-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(clamp(180px, 40vw, 280px), 1fr));
+    gap: clamp(15px, 3vw, 25px);
+    margin-top: clamp(15px, 3vw, 25px);
+}
+
+.imagen-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    border: 2px solid var(--primary-color);
+    aspect-ratio: 4 / 3;
+    background-color: var(--darker-bg);
+}
+
+.imagen-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.descripcion-overlay {
+    position: absolute;
+    bottom: -100%;
+    left: 0;
+    width: 100%;
+    background: rgba(24, 29, 169, 0.9);
+    color: #fff;
+    padding: clamp(10px, 2vw, 20px);
+    box-sizing: border-box;
+    transition: bottom 0.4s ease;
+    text-align: center;
+    border-top: 2px solid var(--secondary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
+}
+
+.descripcion-overlay p {
+    margin: 0;
+    font-size: clamp(12px, 1.8vw, 16px);
+    color: #fff;
+    text-align: center;
+    line-height: 1.4;
+}
+
+/* Efecto Hover */
+.imagen-item:hover img {
+    transform: scale(1.05);
+}
+
+.imagen-item:hover .descripcion-overlay {
+    bottom: 0;
 }
 
 /* ============================================
@@ -191,9 +279,9 @@ header {
    ============================================ */
 
 a {
-    color: #ffeb3b;
+    color: var(--secondary-color);
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: color var(--transition-speed) ease;
 }
 
 a:hover {
@@ -206,20 +294,20 @@ a:hover {
    ============================================ */
 
 .pie {
-    background-color: #1a1a1a;
+    background-color: var(--darker-bg);
     color: #b0b0b0;
-    padding: 30px 20px;
+    padding: clamp(20px, 4vw, 40px);
     text-align: center;
-    border-top: 3px solid rgb(24, 29, 169);
-    font-size: 14px;
+    border-top: 3px solid var(--primary-color);
+    font-size: clamp(12px, 1.8vw, 16px);
     line-height: 1.8;
     width: 100%;
-    margin-top: auto; /* Esta es la clave para empujarlo al fondo */
-    flex-shrink: 0; /* Evita que el footer se aplaste */
+    margin-top: auto;
+    flex-shrink: 0;
 }
 
 .pie p {
-    margin: 8px 0;
+    margin: clamp(5px, 1vw, 10px) 0;
 }
 
 .pie p:last-child {
@@ -227,105 +315,154 @@ a:hover {
 }
 
 /* ============================================
-   RESPONSIVIDAD (MOBILE FIRST)
+   RESPONSIVIDAD MEJORADA
    ============================================ */
 
-/* Tablets */
+/* Tablets (768px y menores) */
 @media (max-width: 768px) {
     header {
-        flex-direction: column;
-        gap: 20px;
+        grid-template-columns: 1fr;
+        gap: clamp(10px, 3vw, 20px);
         text-align: center;
+    }
+
+    .logo {
+        justify-self: center;
     }
 
     .menu-enlaces {
         flex-direction: column;
-        gap: 15px;
+        gap: clamp(10px, 2vw, 15px);
         justify-content: center;
+        order: 3;
+        width: 100%;
     }
 
     .menu-enlaces a {
-        font-size: 16px;
+        display: block;
+        width: 100%;
     }
 
-    .title h3 {
-        font-size: 20px;
+    .title {
         text-align: center;
+        order: 2;
     }
 
     .seccion {
-        padding: 20px;
-        margin-bottom: 30px;
-    }
-
-    .seccion h2 {
-        font-size: 24px;
+        padding: clamp(15px, 3vw, 25px);
+        margin-bottom: clamp(20px, 4vw, 40px);
     }
 
     .seccion p {
-        font-size: 15px;
         text-align: left;
     }
 
     .contenido-principal {
-        padding: 40px 15px;
+        padding: clamp(20px, 4vw, 40px) clamp(10px, 3vw, 20px);
         flex: 1 0 auto;
+    }
+
+    .galeria-container {
+        grid-template-columns: repeat(auto-fit, minmax(clamp(150px, 45vw, 250px), 1fr));
     }
 }
 
-
+/* Móviles pequeños (480px y menores) */
 @media (max-width: 480px) {
     .headbar {
-        padding: 15px 10px;
-    }
-
-    .logo {
-        height: 80px;
-        width: 80px;
+        padding: clamp(10px, 3vw, 15px);
     }
 
     header {
-        gap: 15px;
+        gap: clamp(8px, 2vw, 12px);
+    }
+
+    .logo {
+        height: clamp(60px, 15vw, 90px);
+        width: clamp(60px, 15vw, 90px);
     }
 
     .menu-enlaces {
-        gap: 10px;
+        gap: clamp(8px, 1.5vw, 12px);
     }
 
     .menu-enlaces a {
-        font-size: 14px;
+        font-size: clamp(13px, 2vw, 16px);
     }
 
     .title h3 {
-        font-size: 18px;
+        font-size: clamp(16px, 2.5vw, 22px);
     }
 
     .seccion {
-        padding: 15px;
-        margin-bottom: 20px;
+        padding: clamp(12px, 2.5vw, 18px);
+        margin-bottom: clamp(15px, 3vw, 25px);
     }
 
     .seccion h2 {
-        font-size: 20px;
+        font-size: clamp(20px, 3.5vw, 26px);
+        margin-bottom: clamp(10px, 2vw, 15px);
     }
 
     .seccion p {
-        font-size: 14px;
+        font-size: clamp(13px, 1.8vw, 16px);
     }
 
     .btn-link {
-        padding: 12px 20px;
-        font-size: 14px;
+        padding: clamp(10px, 2vw, 14px) clamp(15px, 3vw, 25px);
+        font-size: clamp(12px, 1.8vw, 15px);
     }
 
     .contenido-principal {
-        padding: 30px 10px;
+        padding: clamp(15px, 3vw, 25px) clamp(8px, 2vw, 12px);
+    }
+
+    .galeria-container {
+        grid-template-columns: 1fr;
+        gap: clamp(12px, 2vw, 18px);
+    }
+
+    .imagen-item {
+        aspect-ratio: 16 / 9;
+    }
+
+    .descripcion-overlay p {
+        font-size: clamp(11px, 1.6vw, 14px);
     }
 
     .pie {
-        margin-top: auto; 
-    flex-shrink: 0;   
-    background-color: #1a1a1a;
-    width: 100%;
+        padding: clamp(15px, 3vw, 25px);
+        font-size: clamp(11px, 1.6vw, 14px);
     }
+}
+
+/* Ultra-pequeños (menos de 320px - para dispositivos muy antiguos) */
+@media (max-width: 320px) {
+    .menu-enlaces {
+        gap: clamp(5px, 1vw, 8px);
+    }
+
+    .menu-enlaces a {
+        font-size: clamp(12px, 1.5vw, 14px);
+    }
+
+    .galeria-container {
+        gap: clamp(8px, 1.5vw, 12px);
+    }
+}
+
+.btn-descarga {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: #f5c518; /* amarillo, a juego con tus títulos */
+    color: #1a1a1a;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-descarga:hover {
+    background-color: #d4a912;
+    transform: translateY(-2px);
 }
